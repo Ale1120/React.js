@@ -14,9 +14,15 @@ pipeline {
                 sh 'npm install'
             }
         }
+        stage('Test') {
+           steps {
+               sh './scripts/test.sh'
+           }
+       }
         stage('Deliver') {
             steps {
-                sh 'npm run build:dev'
+                sh './scripts/.sh'
+                input message: 'Finished using the web site? (Click "Proceed" to continue)'
             }
         }
     }
